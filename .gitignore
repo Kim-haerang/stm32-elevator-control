@@ -1,0 +1,16 @@
+# Generated build output
+/firmware/Debug/
+/firmware/Release/
+*.o
+*.d
+*.su
+*.cyclo
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+# Local workspace state
+.metadata/
+.DS_Store
+Thumbs.db
