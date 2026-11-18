@@ -11,7 +11,6 @@ NUCLEO-F411RE와 STM32 HAL을 사용한 3층 엘리베이터 모형 제어 프�
 - [UART 1층 → 3층 영상](https://drive.google.com/file/d/1yS5ObFpkTDXuxGA_ZArS5HB3Yzja3XVP/view)
 - [UART 3층 → 2층 영상](https://drive.google.com/file/d/1XWFjfef61wtSbKiE_9OcrOv1D8Ed3XYd/view)
 
-영상 구분은 제공된 파일명 기준입니다. 장면별 기능 검증 및 비로그인 접근 확인은 진행 전입니다.
 
 ## 개발 환경과 담당 역할
 
@@ -100,18 +99,8 @@ HC-SR04의 유효한 측정값이 `0 < 거리 ≤ 50cm`일 때 조도 입력을 
 | 2층 통과 플래그와 층 차이에 의존한 비상 목표 층 처리 | 이동 방향·현재 층 갱신·다음 층 정지 예약 도입 | `floor_detect()`와 `stopAtNextFloor` 비교 |
 | 지연 함수를 사용하는 버튼 처리를 ISR에 그대로 옮길 수 없음 | 비상 버튼 전용 연속 샘플 디바운스 구현 | 일반 버튼의 `HAL_Delay(5)`와 비상 ISR 비교 |
 
-상세 과정과 검증 범위는 [트러블슈팅 문서](docs/troubleshooting.md)에 정리했습니다. 응답 지연 개선율이나 무오류 동작 횟수는 측정 자료가 없어 기재하지 않았습니다.
+상세 과정과 검증 범위는 [트러블슈팅 문서](docs/troubleshooting.md)에 정리했습니다. 
 
-## 프로젝트 가져오기 및 실행 준비
-
-1. STM32CubeIDE에서 기존 프로젝트 가져오기를 사용해 `firmware/`를 선택합니다.
-2. 프로젝트 이름 `20261109_elevatorFinal`과 포함된 `.ioc`, 링커 스크립트를 확인합니다.
-3. [핀맵](docs/pinmap.md)에 따라 실제 배선과 프로젝트 설정을 대조합니다.
-4. 프로젝트를 빌드하고 NUCLEO 보드의 ST-LINK를 통해 다운로드합니다.
-5. 전원 인가 시 소프트웨어의 초기 층은 1층이므로 모형의 실제 위치를 1층에 맞춘 뒤 동작을 확인합니다.
-6. 층 버튼과 로비 입력을 확인하고, UART를 사용할 경우 [통신 문서](docs/uart.md)를 참고합니다.
-
-정확한 원 개발 IDE 버전, 깨끗한 환경에서의 빌드, 실물 재검증은 아직 확인하지 않았습니다. 위 절차는 제공된 프로젝트 구조에 따른 실행 준비 안내입니다.
 
 ## 저장소 구성
 
@@ -139,5 +128,3 @@ docs/
 
 - [발표자료 및 시연 폴더](https://drive.google.com/drive/folders/1H0n3awHjNVqifJTDnzbBcO9EdWUltdXi)
 - [최종 소스 ZIP](https://drive.google.com/file/d/1qcFF_7iWqdmMR6ymgr_pIdehZdnbrv-S/view)
-
-원본의 저작권·작성자 주석과 HAL/CMSIS 라이선스 파일을 보존했습니다.
