@@ -22,8 +22,6 @@ NUCLEO-F411RE와 STM32 HAL을 사용한 3층 엘리베이터 모형 제어 프�
 | 실행 구조 | 메인 루프 + 타이머·UART·외부 인터럽트 |
 | 기준 소스 | `20261109_elevatorFinal.zip` |
 
-발표자료에 기재된 역할 분담입니다. HAL/CMSIS 및 공용 드라이버 전체를 개인 단독 작성 코드로 주장하지 않습니다.
-
 | 담당자 | 담당 범위 |
 | --- | --- |
 | **본인** | 엘리베이터 제어, 로비 호출, 비상 처리, 모터, LCD/FND, RTC, 사운드 |
@@ -87,7 +85,7 @@ HC-SR04의 유효한 측정값이 `0 < 거리 ≤ 50cm`일 때 조도 입력을 
 
 층 감지는 ISR에서 처리하되, 재생 요청만 `pendingFloorSound`에 저장합니다. 메인 루프는 기존 PRIMASK를 저장한 짧은 임계 구역에서 요청을 가져오고 초기화한 뒤 원래 인터럽트 상태를 복원합니다. 실제 재생은 `sound_task()`가 150ms 경과 여부와 재생 단계를 이용해 진행합니다.
 
-시작음 `sound_power()`는 `HAL_Delay()`를 사용합니다. 따라서 전체 펌웨어를 완전한 비차단 구조로 표현하지 않습니다.
+시작음 `sound_power()`는 `HAL_Delay()`를 사용합니다. 
 
 관련 코드: [elevator.c](firmware/Core/Src/ap/service/elevator/elevator.c), [sound.c](firmware/Core/Src/ap/service/sound/sound.c).
 
